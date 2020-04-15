@@ -14,151 +14,83 @@ namespace Examen2.AccessoDatos
     {
         private readonly string ConnectionString = "Data Source=.;Initial Catalog=Examen2;Integrated Security=True";
 
-        
 
-        public Boolean nonQueryUsing(string query)
+
+        public Boolean Query(string query)
         {
-
-
-            SqlCommand cmd;
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            SqlDataReader resultado = null;
+            try
             {
-
-                try
+                using (SqlConnection cnn = new SqlConnection(ConnectionString))
                 {
-                    connection.Open();
-                    cmd = new SqlCommand(query, connection);
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-
-                }
-                catch (Exception ex)
-                {
-                    Interaction.MsgBox("Conexion.nonQueryUsing Error: " + ex.Message, 0, "Advertencia");
-                    return false;
-                }
-            }
-
-            return true;
-
-        }
-
-
-
-        public SqlDataReader QueryUsing(string query)
-        {
-
-
-            SqlCommand cmd;
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-
-                try
-                {
-                    connection.Open();
-
-                    cmd = new SqlCommand(query, connection);
-                    SqlDataReader resultado = cmd.ExecuteReader();
-                    cmd.Dispose();
+                    cnn.Open();
+                    SqlCommand cmd;
+                    cmd = new SqlCommand(query, cnn);
+                    resultado = cmd.ExecuteReader();
                     if (resultado.HasRows)
                     {
-
-
-                        return resultado;
+                        cmd.Dispose();
+                        return false;
+                    }
+                    else
+                    {
+                        cmd.Dispose();
+                        return true;
                     }
 
                 }
-                catch (Exception ex)
-                {
-
-                    Interaction.MsgBox("Conexion.QueryUsing Error: " + ex.Message, 0, "Advertencia");
-
-                }
             }
-            return null;
-
+            catch (Exception ex)
+            {
+                Console.WriteLine("El error es :", ex.Message);
+                return true;
+            }
 
         }
-
-        public Ingredientes QueryUsingBuscar(string query)
+        public Boolean NonQuery(string sqlQuery)
         {
-
-
-            SqlCommand cmd;
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-
-                try
+                using (SqlConnection cnn = new SqlConnection(ConnectionString))
                 {
-                    connection.Open();
-
-                    cmd = new SqlCommand(query, connection);
-                    SqlDataReader resultado = cmd.ExecuteReader();
-                    cmd.Dispose();
-                    if (resultado.Read())
+                    cnn.Open();
+                    SqlCommand cmd;
+                    cmd = new SqlCommand(sqlQuery, cnn);
+                    if (cmd.ExecuteNonQuery() != -1)
                     {
-                        return new Ingredientes(resultado.GetString(0).Trim(), resultado.GetString(1).Trim());
-
+                        cmd.Dispose();
+                        return true;
                     }
-
-                }
-                catch (Exception ex)
-                {
-
-                    Interaction.MsgBox("Conexion.QueryUsingBuscar -> Error: " + ex.Message, 0, "Advertencia");
-                    return null;
-
+                    else
+                    {
+                        cmd.Dispose();
+                        return false;
+                    }
                 }
             }
-            return null;
-
-
+            catch (Exception ex)
+            {
+                Console.WriteLine("El error es :", ex.Message);
+                return false;
+            }
         }
 
-
-
-        public List<Ingredientes> QueryUsingLista(string query)
+        public DataTable ConexionADO(string query)
         {
-
-            List<Ingredientes> ingredientes = new List<Ingredientes>();
-            SqlCommand cmd;
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-
-                try
-                {
-                    connection.Open();
-                    cmd = new SqlCommand(query, connection);
-                    SqlDataReader resultado = cmd.ExecuteReader();
-                    cmd.Dispose();
-                    if (resultado.HasRows)
-                    {
-                        while (resultado.Read())
-                        {
-
-                            ingredientes.Add(new Ingredientes(resultado.GetString(0).Trim(), resultado.GetString(1).Trim()));
-
-                        }
-
-                        return ingredientes;
-                    }
-
-                }
-                catch (Exception ex)
-                {
-
-                    Interaction.MsgBox("Conexion.QueryUsingLista Error: " + ex.Message, 0, "Advertencia");
-
-                }
+                SqlDataAdapter adapter = new SqlDataAdapter(query, ConnectionString);
+                DataTable ds = new DataTable();
+                adapter.Fill(ds);
+                return ds;
             }
-            return null;
-
-
+            catch (Exception ex)
+            {
+                Console.WriteLine("Can not open connection ! " + ex.Message);
+                return null;
+            }
         }
     }
-}
+    }
+
 

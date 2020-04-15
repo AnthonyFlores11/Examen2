@@ -89,6 +89,10 @@
       <Project>{5e60dc69-57e0-40db-8175-e7a4c2f12125}</Project>
       <Name>Examen2.Logica</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Examen2.Presentacion.SocketCliente\Examen2.Presentacion.SocketCliente.csproj">
+      <Project>{0b267da3-7e07-4cda-8436-27479a02f241}</Project>
+      <Name>Examen2.Presentacion.SocketCliente</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

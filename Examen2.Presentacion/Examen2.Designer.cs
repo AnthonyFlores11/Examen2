@@ -34,9 +34,6 @@
             this.txb_nombre = new System.Windows.Forms.TextBox();
             this.txb_descripcion = new System.Windows.Forms.TextBox();
             this.lb_descripcion = new System.Windows.Forms.Label();
-            this.rb_desayuno = new System.Windows.Forms.RadioButton();
-            this.rb_almuerzo = new System.Windows.Forms.RadioButton();
-            this.rb_cena = new System.Windows.Forms.RadioButton();
             this.btn_salvar = new System.Windows.Forms.Button();
             this.btn_eliminar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -47,10 +44,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_eliminar_ingrediente = new System.Windows.Forms.Button();
             this.btn_agregar_ingrediente = new System.Windows.Forms.Button();
-            this.grbx_Plato = new System.Windows.Forms.GroupBox();
+            this.radioDesa = new System.Windows.Forms.RadioButton();
+            this.radioAlmu = new System.Windows.Forms.RadioButton();
+            this.radioCena = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dg_menu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.grbx_Plato.SuspendLayout();
             this.SuspendLayout();
             // 
             // lb_Menu
@@ -106,42 +104,6 @@
             this.lb_descripcion.Size = new System.Drawing.Size(120, 25);
             this.lb_descripcion.TabIndex = 4;
             this.lb_descripcion.Text = "Descripcion:";
-            // 
-            // rb_desayuno
-            // 
-            this.rb_desayuno.AutoSize = true;
-            this.rb_desayuno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_desayuno.Location = new System.Drawing.Point(9, 21);
-            this.rb_desayuno.Name = "rb_desayuno";
-            this.rb_desayuno.Size = new System.Drawing.Size(122, 29);
-            this.rb_desayuno.TabIndex = 6;
-            this.rb_desayuno.TabStop = true;
-            this.rb_desayuno.Text = "Desayuno";
-            this.rb_desayuno.UseVisualStyleBackColor = true;
-            // 
-            // rb_almuerzo
-            // 
-            this.rb_almuerzo.AutoSize = true;
-            this.rb_almuerzo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_almuerzo.Location = new System.Drawing.Point(176, 21);
-            this.rb_almuerzo.Name = "rb_almuerzo";
-            this.rb_almuerzo.Size = new System.Drawing.Size(116, 29);
-            this.rb_almuerzo.TabIndex = 7;
-            this.rb_almuerzo.TabStop = true;
-            this.rb_almuerzo.Text = "Almuerzo";
-            this.rb_almuerzo.UseVisualStyleBackColor = true;
-            // 
-            // rb_cena
-            // 
-            this.rb_cena.AutoSize = true;
-            this.rb_cena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_cena.Location = new System.Drawing.Point(368, 21);
-            this.rb_cena.Name = "rb_cena";
-            this.rb_cena.Size = new System.Drawing.Size(81, 29);
-            this.rb_cena.TabIndex = 8;
-            this.rb_cena.TabStop = true;
-            this.rb_cena.Text = "Cena";
-            this.rb_cena.UseVisualStyleBackColor = true;
             // 
             // btn_salvar
             // 
@@ -242,24 +204,50 @@
             this.btn_agregar_ingrediente.UseVisualStyleBackColor = true;
             this.btn_agregar_ingrediente.Click += new System.EventHandler(this.btn_agregar_ingrediente_Click);
             // 
-            // grbx_Plato
+            // radioDesa
             // 
-            this.grbx_Plato.Controls.Add(this.rb_desayuno);
-            this.grbx_Plato.Controls.Add(this.rb_almuerzo);
-            this.grbx_Plato.Controls.Add(this.rb_cena);
-            this.grbx_Plato.Location = new System.Drawing.Point(12, 558);
-            this.grbx_Plato.Name = "grbx_Plato";
-            this.grbx_Plato.Size = new System.Drawing.Size(455, 60);
-            this.grbx_Plato.TabIndex = 19;
-            this.grbx_Plato.TabStop = false;
-            this.grbx_Plato.Text = "Horario";
+            this.radioDesa.AutoSize = true;
+            this.radioDesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioDesa.Location = new System.Drawing.Point(21, 576);
+            this.radioDesa.Name = "radioDesa";
+            this.radioDesa.Size = new System.Drawing.Size(122, 29);
+            this.radioDesa.TabIndex = 19;
+            this.radioDesa.TabStop = true;
+            this.radioDesa.Text = "Desayuno";
+            this.radioDesa.UseVisualStyleBackColor = true;
+            // 
+            // radioAlmu
+            // 
+            this.radioAlmu.AutoSize = true;
+            this.radioAlmu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioAlmu.Location = new System.Drawing.Point(166, 576);
+            this.radioAlmu.Name = "radioAlmu";
+            this.radioAlmu.Size = new System.Drawing.Size(116, 29);
+            this.radioAlmu.TabIndex = 20;
+            this.radioAlmu.TabStop = true;
+            this.radioAlmu.Text = "Almuerzo";
+            this.radioAlmu.UseVisualStyleBackColor = true;
+            // 
+            // radioCena
+            // 
+            this.radioCena.AutoSize = true;
+            this.radioCena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioCena.Location = new System.Drawing.Point(307, 576);
+            this.radioCena.Name = "radioCena";
+            this.radioCena.Size = new System.Drawing.Size(81, 29);
+            this.radioCena.TabIndex = 21;
+            this.radioCena.TabStop = true;
+            this.radioCena.Text = "Cena";
+            this.radioCena.UseVisualStyleBackColor = true;
             // 
             // Examen2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1021, 696);
-            this.Controls.Add(this.grbx_Plato);
+            this.Controls.Add(this.radioCena);
+            this.Controls.Add(this.radioAlmu);
+            this.Controls.Add(this.radioDesa);
             this.Controls.Add(this.btn_eliminar_ingrediente);
             this.Controls.Add(this.btn_agregar_ingrediente);
             this.Controls.Add(this.textDescripIngre);
@@ -280,8 +268,6 @@
             this.Text = "Examen2";
             ((System.ComponentModel.ISupportInitialize)(this.dg_menu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.grbx_Plato.ResumeLayout(false);
-            this.grbx_Plato.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,9 +281,6 @@
         private System.Windows.Forms.TextBox txb_nombre;
         private System.Windows.Forms.TextBox txb_descripcion;
         private System.Windows.Forms.Label lb_descripcion;
-        private System.Windows.Forms.RadioButton rb_desayuno;
-        private System.Windows.Forms.RadioButton rb_almuerzo;
-        private System.Windows.Forms.RadioButton rb_cena;
         private System.Windows.Forms.Button btn_salvar;
         private System.Windows.Forms.Button btn_eliminar;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -308,6 +291,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_eliminar_ingrediente;
         private System.Windows.Forms.Button btn_agregar_ingrediente;
-        private System.Windows.Forms.GroupBox grbx_Plato;
+        private System.Windows.Forms.RadioButton radioDesa;
+        private System.Windows.Forms.RadioButton radioAlmu;
+        private System.Windows.Forms.RadioButton radioCena;
     }
 }

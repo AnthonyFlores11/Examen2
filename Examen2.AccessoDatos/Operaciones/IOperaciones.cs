@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,9 @@ namespace Examen2.AccessoDatos
     {
         Boolean Insertar(T entidad);
         Boolean Elminiar(T entidad);
-        void Modificar(T entidad);
+        Boolean Modificar(T entidad);
         T Buscar(string entidad);
-        SqlDataAdapter buscarTodos();
+        DataTable buscarTodos();
        // List<T> BuscarTodos();
 
 

@@ -8,6 +8,7 @@ using Examen2.AccessoDatos.Operaciones;
 using Examen2.AccessoDatos;
 using Microsoft.VisualBasic;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Examen2.Logica
 {
@@ -15,11 +16,94 @@ namespace Examen2.Logica
     public class Operaciones
     {
         OperacionesIngredientes op = new OperacionesIngredientes();
+        OperacionesMenu opM = new OperacionesMenu();
         Conexion con = new Conexion();
 
         #region Operaciones Menu
 
         #endregion
+
+        public Boolean InsertaMenu(Menu menu)
+        {
+            try
+            {
+
+                if (opM.Insertar(menu))
+                {
+
+                    return true;
+
+                }
+                else
+                {
+
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error en la conexion con la Base de Datos" + ex.Message, 0, "Advertencia");
+                return false;
+            }
+
+        }
+
+        public Boolean EliminarMenu(Menu m)
+        {
+            try
+            {
+
+                if (opM.Elminiar(m))
+                {
+
+                    return true;
+
+                }
+                else
+                {
+
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error en la conexion con la Base de Datos" + ex.Message, 0, "Advertencia");
+                return false;
+            }
+
+        }
+
+        public Boolean Actualizar(Menu m)
+        {
+            try
+            {
+
+                if (opM.Modificar(m))
+                {
+
+                    return true;
+
+                }
+                else
+                {
+
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error en la conexion con la Base de Datos" + ex.Message, 0, "Advertencia");
+                return false;
+            }
+        }
+
+
 
         #region Operaciones Ingredientes
 
@@ -75,12 +159,40 @@ namespace Examen2.Logica
                 return false;
             }
         }
-        public SqlDataAdapter Cargardatos()
+        public DataTable Cargardatos()
         {
 
             try
             {
-                SqlDataAdapter res = op.buscarTodos();
+                DataTable res = op.buscarTodos();
+                if (res != null)
+                {
+
+                    return res;
+
+                }
+                else
+                {
+
+                    Console.WriteLine("Error en la conexion con la Base de Datos", 0, "Advertencia");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("LogicaNegocio.traerDatos" + ex.Message, 0, "Advertencia");
+
+            }
+
+            return null;
+        }
+
+        public DataTable CargardatosM()
+        {
+
+            try
+            {
+                DataTable res = opM.buscarTodos();
                 if (res != null)
                 {
 

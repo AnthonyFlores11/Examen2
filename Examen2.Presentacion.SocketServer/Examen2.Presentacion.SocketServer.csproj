@@ -49,5 +49,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Examen2.Entidades\Examen2.Entidades.csproj">
+      <Project>{46a4dccb-0688-4603-9d48-8e9870a41c7e}</Project>
+      <Name>Examen2.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Examen2.Logica\Examen2.Logica.csproj">
+      <Project>{5e60dc69-57e0-40db-8175-e7a4c2f12125}</Project>
+      <Name>Examen2.Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
